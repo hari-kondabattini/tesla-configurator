@@ -1,1 +1,35 @@
-<p>tesla-config-step-3 works!</p>
+<h1>Step 3: Summary</h1>
+
+    <h2>Your Tesla {{teslaConfigService.carModelDescription}}</h2>
+
+    <div>
+        <div>
+            <span>
+                {{teslaConfigService.selectedConfig.description}}<br/>
+                Range: {{teslaConfigService.selectedConfig?.range}} miles - Max speed: {{teslaConfigService.selectedConfig?.speed}}
+            </span> - 
+            <span>{{teslaConfigService.selectedConfig?.price | currency: 'USD'}}</span>
+        </div>
+        <div>
+            <span>{{teslaConfigService.carColorDescription}}</span> Color - <span>{{teslaConfigService.carColorPrice | currency}}</span>
+        </div>
+        
+        <div *ngIf="teslaConfigService.carConfigIncludeTow">
+            <span>Tow Hitch Package</span> - <span>{{1000 | currency}}</span>
+        </div>
+
+        <div *ngIf="teslaConfigService.carConfigIncludeYoke">
+            <span>Yoke Steering Wheel</span> - <span>{{1000 | currency}}</span>
+        </div>
+        
+        <hr/>
+
+        <div>
+            <span>TOTAL COST</span> - <span>{{totalCost | currency}}</span>
+        </div>
+    </div>
+    
+    <div *ngIf="teslaConfigService.carModel && teslaConfigService.carColor">
+        <img src="assets/images/{{teslaConfigService.carModel}}/{{teslaConfigService.carColor}}.jpg" />
+    </div>
+    

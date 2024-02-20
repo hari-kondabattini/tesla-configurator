@@ -1,1 +1,30 @@
-<p>tesla-config-step-2 works!</p>
+<h1>Step 2: Select your config and options</h1>
+
+<label for="configSelect">Config: </label>
+<select id="configSelect" [formControl]="carConfig">
+    <option [ngValue]="null">Choose...</option>
+    <option *ngFor="let config of carModelConfigOptions?.configs" [ngValue]="config.id">{{config.description}}
+    </option>
+</select>
+
+<ng-container *ngIf="selectedConfig">
+    <p>Range: {{selectedConfig?.range}} miles - Max speed: {{selectedConfig?.speed}} - Cost: {{selectedConfig?.price |
+        currency: 'USD'}}</p>
+</ng-container>
+
+<div *ngIf="carModelConfigOptions?.towHitch" class="checkbox-container">
+    <label for="includeTow">Tow hitch? </label>
+    <input type="checkbox" id="includeTow" [formControl]="includeTow" value="false">
+</div>
+
+<div *ngIf="carModelConfigOptions?.yoke" class="checkbox-container">
+    <label for="includeYoke">Yoke steering wheel? </label>
+    <input type="checkbox" id="includeYoke" [formControl]="includeYoke"
+        value="false">
+</div>
+
+
+
+<div *ngIf="teslaConfigService.carModel && teslaConfigService.carColor">
+    <img src="assets/images/{{teslaConfigService.carModel}}/{{teslaConfigService.carColor}}.jpg" />
+</div>

@@ -4,6 +4,9 @@ import { TeslaConfigStep1Component } from './components/tesla-config-step-1/tesl
 import { TeslaConfigStep2Component } from './components/tesla-config-step-2/tesla-config-step-2.component';
 import { TeslaConfigStep3Component } from './components/tesla-config-step-3/tesla-config-step-3.component'
 
+import { teslaConfigStep2Guard } from './guards/tesla-config-step2.guard';
+import { teslaConfigStep3Guard } from './guards/tesla-config-step3.guard';
+
 export const routes: Routes = [
     {
         path: 'step1',
@@ -11,11 +14,13 @@ export const routes: Routes = [
     },
     {
         path: 'step2',
-        component: TeslaConfigStep2Component
+        component: TeslaConfigStep2Component,
+        canActivate: [teslaConfigStep2Guard]
     },
     {
         path: 'step3',
-        component: TeslaConfigStep3Component
+        component: TeslaConfigStep3Component,
+        canActivate: [teslaConfigStep3Guard]
     },
     {
         path: '',

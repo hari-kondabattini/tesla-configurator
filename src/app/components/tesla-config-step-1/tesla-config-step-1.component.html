@@ -1,1 +1,39 @@
-<p>tesla-config-step-1 works!</p>
+<h1>Step 1: Choose your Model and Color</h1>
+<div>
+
+    <label for="modelSelect">Model: </label>
+    <!-- <select id="modelSelect"  [(ngModel)]="carModel"> -->
+    <select id="modelSelect"  [formControl]="carModel">
+        <option [ngValue]="null">Choose...</option>
+        <option *ngFor="let model of models" [ngValue]="model.code">{{model.description}}
+        </option>
+    </select>
+
+    <ng-container *ngIf="carModel.value">
+        <label for="colorSelect">Color: </label>
+        <!-- <select id="colorSelect"  [(ngModel)]="carColor"> -->
+        <select id="colorSelect"  [formControl]="carColor">
+            <!-- <option *ngFor="let color of colors" [ngValue]="color.code">{{color.description}} </option>-->
+            <!-- <option *ngFor="let color of models[carModel]" [ngValue]="color.code">{{color.description}} </option>-->
+            
+            <!-- <ng-container *ngIf="carModel.value">
+                <option *ngFor="let color of models[carModel.value]?.colors" [ngValue]="color.code">{{color.description}}</option>
+            </ng-container> -->
+
+            <option *ngFor="let color of colors" [ngValue]="color.code">{{color.description}}</option>
+            
+        </select>
+    </ng-container>
+</div>
+<!-- <div class="spinner"></div> -->
+
+
+<!-- <div *ngIf="carModel.value && carColor.value"> -->
+    <!-- <img src="assets/images/{{carModel}}/{{carColor}}.jpg"/> -->
+    <!-- <img src="assets/images/{{carModel.value}}/{{carColor.value}}.jpg" />
+</div> -->
+
+
+<div *ngIf="teslaConfigService.carModel && teslaConfigService.carColor">
+    <img src="assets/images/{{teslaConfigService.carModel}}/{{teslaConfigService.carColor}}.jpg" />
+</div>

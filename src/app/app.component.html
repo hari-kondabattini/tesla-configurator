@@ -1,5 +1,5 @@
 <button class="nav-link" id="step1" type="button" [routerLink]="['/step1']">Step 1</button>
-<button class="nav-link" id="step2" type="button" [routerLink]="['/step2']">Step 2</button>
-<button class="nav-link" id="step3" type="button" [routerLink]="['/step3']">Step 3</button>
+<button class="nav-link" id="step2" type="button" [routerLink]="['/step2']" [disabled]="!teslaConfigService.carModel || !teslaConfigService.carColor">Step 2</button>
+<button class="nav-link" id="step3" type="button" [routerLink]="['/step3']" [disabled]="!teslaConfigService.carModel || !teslaConfigService.carColor || !teslaConfigService.carConfigId">Step 3</button>
 
 <router-outlet></router-outlet>
