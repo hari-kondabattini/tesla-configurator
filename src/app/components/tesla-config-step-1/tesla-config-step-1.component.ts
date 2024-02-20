@@ -74,9 +74,6 @@ export class TeslaConfigStep1Component implements OnInit {
     /* value change */
 
     this.carModel.valueChanges.subscribe((carModel) => {
-      // const foundModel = this.models.find(model => model.code === carModel.code);
-
-      // this.colors = foundModel ? foundModel.colors : [];
 
       // const foundModel = this.models.find(model => console.log("+ + + model : ", model));
       // const foundModel2 = this.models.find(model => console.log("+ + + model.code : ", model.code));

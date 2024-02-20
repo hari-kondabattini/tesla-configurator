@@ -35,19 +35,11 @@ export class TeslaConfigStep2Component implements OnInit {
 
     console.log(" * + * + * ");
 
-    let models = this.teslaConfigService.getTeslaModelConfig(this.teslaConfigService.carModel).subscribe( (res) => {
+    let configs = this.teslaConfigService.getTeslaModelConfig(this.teslaConfigService.carModel).subscribe( (res) => {
       console.log(" *** config options ");
       console.log(res);
       this.carModelConfigOptions = res;
       this.configOptions = res.configs;
-
-      // this.models = res;
-
-      
-      // const foundModel = this.models.find(model => model.code === this.carModel.value);
-
-      // this.colors = foundModel ? foundModel.colors : [];
-
 
       // update with preserved value
       if (this.teslaConfigService.carConfigId) {
